@@ -1,19 +1,20 @@
 const fs = require("fs");
 const path = require("path");
 
-fs.writeFile("content.txt", "!This is my content!", (err) => {
-  if (err) throw err;
+// fs.writeFile("content.txt", "!This is my content!", (err) => {
+//   if (err) throw err;
 
-  console.log("The file was created!");
-});
+//   console.log("The file was created!");
+// });
 
 const filePath = path.join(process.cwd(), "content.txt");
 
-fs.readFile(filePath, (err, content) => {
-  if (err) throw err;
+// fs.readFile(filePath, (err, content) => {
+//   if (err) throw err;
 
-  console.log(content.toString());
-});
+//   console.log("!!!!!!!!!!!");
+//   console.log(content.toString());
+// });
 
 // fs.unlink(filePath, (err) => {
 //   if (err) throw err;
@@ -21,41 +22,42 @@ fs.readFile(filePath, (err, content) => {
 //   console.log("File Deleted");
 // });
 
-fs.readdir(process.cwd(), (err, files) => {
-  if (err) throw err;
+// fs.readdir(process.cwd(), (err, files) => {
+//   if (err) throw err;
 
-  console.log(files);
-});
+//   console.log(files);
+// });
 
-fs.mkdir(
-  `${process.cwd()}/myFolder/secondFolder`,
-  {
-    recursive: true,
-  },
-  (err) => {
-    if (err) throw err;
+// fs.mkdir(
+//   `${process.cwd()}/myFolder/secondFolder`,
+//   {
+//     recursive: true,
+//   },
+//   (err) => {
+//     if (err) throw err;
 
-    console.log("Folder created successfully");
-  }
-);
-//   recursive is not set to true so you can only create a single folder level
+//     console.log("Folder created successfully");
+//   }
+// );
+
+// //   recursive is not set to true so you can only create a single folder level
 // fs.mkdir(`${process.cwd()}/myFolder`, (err) => {
 //   if (err) throw err;
 
 //   console.log("Folder created successfully");
 // });
 
-fs.rmdir(
-  `${process.cwd()}/myFolder/secondFolder`,
-  {
-    recursive: true,
-  },
-  (err) => {
-    if (err) throw err;
+// fs.rmdir(
+//   `${process.cwd()}/myFolder/secondFolder`,
+//   {
+//     recursive: true,
+//   },
+//   (err) => {
+//     if (err) throw err;
 
-    console.log("Folder deleted successfully");
-  }
-);
+//     console.log("Folder deleted successfully");
+//   }
+// );
 
 // fs.rename(
 //   `${process.cwd()}/myFolder/secondFolder`,
@@ -73,7 +75,7 @@ fs.rmdir(
 //   (err) => {
 //     if (err) throw err;
 
-//     console.log("Folder deleted successfully");
+//     console.log("File Renamed Successfully");
 //   }
 // );
 

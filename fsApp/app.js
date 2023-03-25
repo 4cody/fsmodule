@@ -7,7 +7,7 @@ const fs = require("fs/promises");
       const existingFileHandle = await fs.open(path, "r");
       existingFileHandle.close();
       // file exists, returns error
-      return console.log(`The File path ${path} exists already.`);
+      return console.error(`The File path ${path} exists already.`);
     } catch (e) {
       // don't have the file, should create
       const newFileHandle = await fs.open(path, "w");
@@ -34,7 +34,7 @@ const fs = require("fs/promises");
       const f = await fs.rename(oldPath, newPath);
       console.log(f);
     } catch (err) {
-      if (e.code === "ENOENT") {
+      if (err.code === "ENOENT") {
         console.log(
           "no file at this path to rename or destination doesn't exist"
         );
@@ -69,7 +69,7 @@ const fs = require("fs/promises");
     const size = (await commandFileHandler.stat()).size;
     // allocate buffer with file size
     const buff = Buffer.alloc(size);
-    // loc to start filling buffer
+    // location to start filling buffer
     const offset = 0;
     // how many bytes to read
     const length = buff.byteLength;
@@ -81,21 +81,21 @@ const fs = require("fs/promises");
 
     const command = buff.toString("utf-8");
 
-    // create a file command:
+    // create a file: |command| =
     // 'create a file <path>'
     if (command.includes(CREATE_FILE)) {
       const filePath = command.substring(CREATE_FILE.length + 1);
       createFile(filePath);
     }
 
-    // delete a file command:
+    // delete a file: |command| =
     // 'delete file <path>'
     if (command.includes(DELETE_FILE)) {
       const filePath = command.substring(DELETE_FILE.length + 1);
       deleteFile(filePath);
     }
 
-    // rename a file command:
+    // rename a file: |command| =
     // 'rename the file <path> to <name>'
     if (command.includes(RENAME_FILE)) {
       const _idx = command.indexOf(" to ");
@@ -104,7 +104,7 @@ const fs = require("fs/promises");
       renameFile(oldPath, newPath);
     }
 
-    // add to a file command:
+    // add to a file: |command| =
     // 'add to the file <path> this content: <content>'
     if (command.includes(ADD_TO_FILE)) {
       const _idx = command.indexOf(" this content: ");
